@@ -82,6 +82,18 @@ pydocstyle src
 pytest
 ```
 
+**build**
+
+```bash
+pytest
+```
+
+**run**
+
+```bash
+docker run -d  -p 80:80 test
+```
+
 ## Async await in python
 
 https://fastapi.tiangolo.com/async/

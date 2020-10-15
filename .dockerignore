@@ -14,7 +14,16 @@ nosetests.xml
 coverage.xml
 *,cover
 *.log
+*.ini
 .git*
 tests
 scripts
 postman
+htmlcov
+.vscode
+.pytest_cache
+.mypy_cache
+*.lock
+*.toml
+*.md
+*.yaml
