@@ -40,6 +40,12 @@ poetry run poe start
 poetry add <package>
 ```
 
+**install dev packages**
+
+```bash
+poetry add --dev <package>
+```
+
 **deactivate virtual env**
 
 ```bash

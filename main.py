@@ -3,7 +3,7 @@ import time
 import os
 
 
-from fastapi import FastAPI, Request, Header,HTTPException
+from fastapi import FastAPI, Request, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from src import handler
@@ -25,17 +25,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-async def _event(request: Request) -> dict:
-  event= {}
-  event['headers'] = dict(request.headers.items())
-  event['method'] = request.method
-  try:
-    event['body'] = await request.json()
-  except:
-    pass
-    # raise Exception('No Body in Request')
-  return event 
 
+async def _event(request: Request) -> dict:
+    event = {}
+    event["headers"] = dict(request.headers.items())
+    event["method"] = request.method
+    try:
+        event["body"] = await request.json()
+    except:
+        pass
+        # raise Exception('No Body in Request')
+    return event
 
 
 @app.middleware("http")
@@ -43,20 +43,19 @@ async def add_process_time_header(request: Request, call_next):
     start_time = time.time()
     response = await call_next(request)
     process_time = time.time() - start_time
-    response.headers["X-Process-Time"] = str(round(process_time,3))
+    response.headers["X-Process-Time"] = str(round(process_time, 3))
     return response
 
 
 @app.get("/")
 async def call_handler(request: Request):
     try:
-      event = await _event(request)
-      context = os.getenv('HOSTNAME', 'localhost')
-      function_return =  handler.handler(event, context)
+        event = await _event(request)
+        context = os.getenv("HOSTNAME", "localhost")
+        function_return = handler.handler(event, context)
     except Exception as e:
-      raise HTTPException(status_code=404, detail=repr(e),headers={"X-Error": "There goes my error"})
-    
+        raise HTTPException(
+            status_code=404, detail=repr(e), headers={"X-Error": "There goes my error"}
+        )
+
     return function_return
-
-
-
