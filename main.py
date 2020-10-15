@@ -34,7 +34,8 @@ async def _event(request: Request) -> Dict[str, Any]:
     except KeyError:
         pass
         # raise Exception('No Body in Request')
-    return event
+    finally:
+        return event
 
 
 @app.middleware("http")

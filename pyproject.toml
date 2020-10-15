@@ -14,7 +14,11 @@ authors = ["Philipp Schmid <schmidphilipp1995@gmail.com>"]
 # test = "scripts:test"
 
 [tool.poe.tasks]
-test       = "pytest --cov=poethepoet"                                # simple command based task
+format    = "black ."
+lint      = "pylama"
+type      = "mypy ."
+test      = "pytest"    
+test-all  =  { shell = "poe format && poe lint && poe type && poe test" }                       # simple command based task
 start     = { shell = "uvicorn main:app --reload" }  # shell script based task
 
 [tool.black]
