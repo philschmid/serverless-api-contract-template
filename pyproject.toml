@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "buml-knative-python-template"
+version = "0.1.0"
+description = ""
+authors = ["Philipp Schmid <schmidphilipp1995@gmail.com>"]
+
+
+
+[tool.poetry.scripts]
+format = "scripts:format"
+reformat = "scripts:reformat"
+lint = "scripts:lint"
+start = "scripts:start"
+test = "scripts:test"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
