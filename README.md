@@ -2,7 +2,11 @@
 
 ## Getting Started
 
-git clone
+**git clone**
+
+```bash
+git clone https://github.com/coc-buml/buml-knative-python-template.git <new-service-name>
+```
 
 **init project**
 
@@ -10,10 +14,24 @@ git clone
 poetry init
 ```
 
-**scripts**
+**init virtual env**
 
 ```bash
-poetry run test
+poetry shell
+```
+
+**install after clone**
+
+```bash
+poetry install
+```
+
+**scripts**
+
+**Aliasing** `alias poe='poetry run poe'`
+
+```bash
+poetry run poe start
 ```
 
 **install packages**
@@ -21,3 +39,17 @@ poetry run test
 ```bash
 poetry add <package>
 ```
+
+**deactivate virtual env**
+
+```bash
+deactivate
+```
+
+## Async await in python
+
+https://fastapi.tiangolo.com/async/
+
+## References
+
+https://github.com/nsidnev/fastapi-realworld-example-app/blob/master/app/main.py
