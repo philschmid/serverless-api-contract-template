@@ -1,9 +1,8 @@
-from typing import Optional
 import time
 import os
+from typing import Dict, Any
 
-
-from fastapi import FastAPI, Request, Header, HTTPException
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from src import handler
@@ -26,13 +25,13 @@ app.add_middleware(
 )
 
 
-async def _event(request: Request) -> dict:
-    event = {}
+async def _event(request: Request) -> Dict[str, Any]:
+    event: Dict[str, Any] = {}
     event["headers"] = dict(request.headers.items())
     event["method"] = request.method
     try:
         event["body"] = await request.json()
-    except:
+    except KeyError:
         pass
         # raise Exception('No Body in Request')
     return event
@@ -55,7 +54,9 @@ async def call_handler(request: Request):
         function_return = handler.handler(event, context)
     except Exception as e:
         raise HTTPException(
-            status_code=404, detail=repr(e), headers={"X-Error": "There goes my error"}
+            status_code=404,
+            detail=repr(e),
+            headers={"X-Error": "There goes my error"},
         )
 
     return function_return

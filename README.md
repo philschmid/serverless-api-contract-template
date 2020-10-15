@@ -52,6 +52,36 @@ poetry add --dev <package>
 deactivate
 ```
 
+**format**
+
+```bash
+black .
+```
+
+**lint**
+
+```bash
+pylama
+```
+
+**type check**
+
+```bash
+mypy .
+```
+
+**pydoc string**
+
+```bash
+pydocstyle src
+```
+
+**test**
+
+```bash
+pytest
+```
+
 ## Async await in python
 
 https://fastapi.tiangolo.com/async/
@@ -59,3 +89,4 @@ https://fastapi.tiangolo.com/async/
 ## References
 
 https://github.com/nsidnev/fastapi-realworld-example-app/blob/master/app/main.py
+https://mypy.readthedocs.io/en/stable/getting_started.html#installing-and-running-mypy

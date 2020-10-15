@@ -17,6 +17,10 @@ authors = ["Philipp Schmid <schmidphilipp1995@gmail.com>"]
 test       = "pytest --cov=poethepoet"                                # simple command based task
 start     = { shell = "uvicorn main:app --reload" }  # shell script based task
 
+[tool.black]
+line-length = 79
+target-version = ['py38']
+
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -27,6 +31,11 @@ uvicorn = "^0.12.1"
 pytest = "^5.2"
 poethepoet = "^0.9.0"
 black = {version = "^20.8b1", allow-prereleases = true}
+pylama = "^7.7.1"
+pylint = "^2.6.0"
+mypy = "^0.790"
+pydocstyle = "^5.1.1"
+pytest-cov = "^2.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
