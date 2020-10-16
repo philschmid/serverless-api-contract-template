@@ -27,3 +27,5 @@ htmlcov
 *.toml
 *.md
 *.yaml
+Dockerfile
+README.md

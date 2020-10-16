@@ -85,7 +85,7 @@ pytest
 **build**
 
 ```bash
-pytest
+docker build . -t
 ```
 
 **run**

@@ -20,6 +20,8 @@ type      = "mypy ."
 test      = "pytest"    
 test-all  =  { shell = "poe format && poe lint && poe type && poe test" }                       # simple command based task
 start     = { shell = "uvicorn main:app --reload" }  # shell script based task
+build     = { shell = "docker build . -t buml-1 " }  # shell script based task
+push = { shell = "docker tag buml-1 philschmi/buml-1:latest; docker push philschmi/buml-1"}
 
 [tool.black]
 line-length = 79
@@ -29,7 +31,7 @@ target-version = ['py38']
 [tool.poetry.dependencies]
 python = "^3.8"
 fastapi = "^0.61.1"
-uvicorn = "^0.12.1"
+uvicorn = {extras = ["standard"], version = "^0.12.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
