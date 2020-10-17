@@ -85,13 +85,13 @@ pytest
 **build**
 
 ```bash
-docker build . -t
+docker build . -t <image-name>
 ```
 
 **run**
 
 ```bash
-docker run -d  -p 80:80 test
+docker run -d  -p internal:external <image-name>
 ```
 
 ## Async await in python
